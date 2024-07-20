@@ -36,7 +36,7 @@ FirstModule:
 
 Hash:
 	xor rax, rax ; Clear the register for the char
-	lodsw ; Load the char from the string
+	lodsw ; Load the wchar from the string
 	test al, al ; Check if the string is over
 	jz HashEnd ; If it is, end the hash
 
