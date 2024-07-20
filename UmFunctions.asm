@@ -1,6 +1,6 @@
 .code
 
-EXTERN_C void* __stdcall GetDllBase(__in const uintmax_t dllNameHash);
+;EXTERN_C void* __stdcall GetDllBase(__in const uintmax_t dllNameHash);
 GetDllBase proc
 	
 	mov r10, rcx 
