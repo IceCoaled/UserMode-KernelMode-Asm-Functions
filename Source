@@ -1,7 +1,7 @@
 .code
 
 
-;EXTERN_C uintmax_t __stdcall SdbmHash(const char* str);
+;EXTERN_C const uintmax_t __stdcall SdbmHash(const char* str);
 SdbmHash proc
 
 	push rbx ; Preserve non volatile registers
