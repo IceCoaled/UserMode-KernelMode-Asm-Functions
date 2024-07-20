@@ -16,7 +16,7 @@ CustomHashA proc
 	
 Hash:
 	xor rax, rax ; Clear the register for the char
-	lodsb ; Load the char from the string
+	lodsb ; Load the wchar from the string
 	test al, al ; Check if the string is over
 	jz HashEnd ; If it is, end the hash
 
