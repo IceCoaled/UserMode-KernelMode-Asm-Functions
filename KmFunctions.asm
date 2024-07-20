@@ -107,7 +107,7 @@ Search:
   	mov r13, 0F0101010101h ; Set the hash
 
 Hash:
-    xor rax, rax ; Clear the register for the char
+      xor rax, rax ; Clear the register for the char
   	lodsb ; Load the char from the string
   	test al, al ; Check if the string is over
   	jz HashEnd ; If it is, end the hash
