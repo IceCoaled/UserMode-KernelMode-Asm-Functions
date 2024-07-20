@@ -1,7 +1,6 @@
 .code
 
-
-;EXTERN_C void* __stdcall FunctionExport(__in const uintmax_t functionHash, __in void* dllBase);
+;EXTERN_C void* FunctionExport(__in const uintmax_t functionHash, __in void* dllBase);
 FunctionExport proc
 
 	mov r10, rcx 
@@ -33,23 +32,25 @@ Search:
 	add rsi, r11 ; Add the dll base to the function Rva
 	inc ebp ; Increment the index
 	
+	xor r14, r14 ; Clear the register for hash
+	mov r12, 0F0101010101h ; Set the hash
 
-	xor rax, rax ; Clear the register for the hash
-	xor r12, r12 ; Clear the register for the index
-
-Sdbm:
-    	lodsb ; Load the char from the string
+Hash:
+    	xor rax, rax ; Clear the register for the char
+	lodsb ; Load the char from the string
 	test al, al ; Check if the string is over
 	jz HashEnd ; If it is, end the hash
-	
-	shl rax, 06h ; shift left 6
-	add rax, r12 ; add the hash
-	shl rax, 10h ; shift left 16
-	sub rax, r12 ; subtract the hash
 
-	jmp Sdbm ; Repeat the hash
+	xor r14, rax
+	imul r14, r12 
+	sub r12, r14
+	ror r14, 10h
+	shl r14, 6h
+
+	jmp Hash ; Repeat the hash
 
 HashEnd:
+	mov rax, r14 ; rax = hash
 	cmp r10, rax ; Compare the hash with the function hash
 	jnz Search ; If not, search the next function
 
@@ -77,5 +78,6 @@ HashEnd:
 	ret
 
 FunctionExport endp
+
 
 end
