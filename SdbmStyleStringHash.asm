@@ -1,3 +1,5 @@
+.code
+
 ;EXTERN_C uintmax_t __stdcall SdbmHash(const char* str);
 SdbmHash proc
 
@@ -34,3 +36,5 @@ HashEnd:
 
 	ret
 SdbmHash endp
+
+end
