@@ -19,7 +19,7 @@ GetDllBase proc
 	mov rax, qword ptr [rax] ; Get the first module
 
 	mov rbx, rax 
-	mov rbp, rax ; Save the first module
+	mov rbp, rax ; Save the first module(depending on the approach its either ntdll, or our own exe)
 	jmp FirstModule
 
 NextModule:
