@@ -1,4 +1,5 @@
-Ive included Here ASM Functions for extracting function pointers from PE32+ images.
+Ive included Here ASM Functions for extracting function pointers from PE32+ images. With a couple 
+functions for obtaining dll base addresses. one kernel specific for ntoskrnl.
 The Hash algorithm is created custom by me, i havent had any collisions yet from various testing.
 
 UM-KM File holds a GetProcAddress that takes a function name hash, as well as a image base address
