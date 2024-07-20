@@ -1,6 +1,6 @@
 .code
 
-;EXTERN_C void* FunctionExport(__in const uintmax_t functionHash, __in void* dllBase);
+;EXTERN_C void* __stdcall FunctionExport(__in const uintmax_t functionHash, __in void* dllBase);
 FunctionExport proc
 
 	mov r10, rcx 
