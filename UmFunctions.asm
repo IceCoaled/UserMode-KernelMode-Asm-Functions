@@ -1,7 +1,5 @@
 .code
 
-
-
 GetDllBase proc
 	
 	mov r10, rcx 
