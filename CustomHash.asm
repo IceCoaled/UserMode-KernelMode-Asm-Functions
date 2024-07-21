@@ -43,7 +43,7 @@ CustomHashA endp
 
 
 
-;EXTERN_C uintmax_t __stdcall CustomHashW(const char* str);
+;EXTERN_C uintmax_t __stdcall CustomHashW(const wchar_t* str);
 CustomHashW proc
 
 	push rbx ; Preserve non volatile registers
