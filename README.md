@@ -1,6 +1,6 @@
 Note: If you have problems with any of these functioning, just let me know with a brief outline of the issue and ill fix it.
 
->>>>>ALL HASHING IS CASE SENSTIVE>>>>>
+>>>>>ALL HASHING IS CASE SENSTIVE
 
 Ive included Here ASM Functions for extracting function pointers from PE32+ images. With a couple 
 functions for obtaining dll base addresses. one kernel specific for ntoskrnl.
