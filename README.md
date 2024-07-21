@@ -14,7 +14,7 @@ It also includes a GetProcAddress for Ntoskrnl specifically that takes just a fu
 ![Screenshot 2024-07-20 012458](https://github.com/user-attachments/assets/a183ce09-57ab-485e-895c-3dffb471a9d3)
 
 Getting Ntoskrnl base Address uses RVA's these are obviously subject to change based on Nt Version.
-I'm currently on version 23h2 (OS build 22631.3880), it has a kernel verison of Windows 10 Kernel Version 22621.
+I'm currently on version 23h2 (OS build 22631.3880), it has Windows 10 Kernel Version 22621.
 that means this should work just fine down to that windows 10 version with no changes.
 
 UPDATE: Added wide char hash function, as well as a function to get any dll base. it takes the dll name hash(wchar_t*)
