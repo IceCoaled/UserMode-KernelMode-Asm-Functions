@@ -149,6 +149,70 @@ HashEnd:
   	ret
 GetNtosKrnlExport endp
 
+
+
+; EXTERN_C void* __stdcall GetModuleBase(__in const uintmax_t moduleNameHash, __in const void* PsLoadedModuleList);
+GetModuleBase proc
+	
+	
+	mov r10, rcx 
+	push r10 ; Save module name hash
+	
+	push rbx ; Preserve non volatile registers
+	push rsi
+	push rdi
+	push rbp
+	
+	mov rax, qword ptr [rdx] ; Get the first module
+
+	mov rbx, rax 
+	mov rbp, rax ; Save the first module
+	jmp FirstModule
+
+NextModule:
+	mov rbp, qword ptr [rbp] ; Get the next module
+	cmp rbp, rbx ; Compare the next module with the first module
+	je ModuleNotFound ; If we are, the module is not loaded
+FirstModule:
+		
+	mov rsi, qword ptr [rbp + 60h]; Get the dll base name string
+
+	xor r14, r14 ; Clear the register for hash
+	mov r12, 0F0101010101h ; Set the hash
+
+Hash:
+	xor rax, rax ; Clear the register for the char
+	lodsw ; Load the char from the string
+	test al, al ; Check if the string is over
+	jz HashEnd ; If it is, end the hash
+
+	xor r14, rax ; xor hash with char
+	imul r14, r12 ; multiply hash with magic number
+	sub r12, r14 ; subtract the hash from the magic number
+	ror r14, 10h ; rotate the hash
+	shl r14, 6h ; shift the hash
+
+	jmp Hash ; Repeat the hash
+
+HashEnd:
+	cmp r10, r14 ; Compare the hash with the module name hash
+	jnz NextModule ; If not, search the next module
+	mov rax, qword ptr [rbp + 30h] ; Get the module base
+	jmp ModuleFound ; End the function
+
+ModuleNotFound:
+	xor rax, rax ; Clear the return value
+	
+ModuleFound:	
+	pop rbp ; Restore non volatile registers
+	pop rdi
+	pop rsi
+	pop rbx
+	pop r10 ; Restore module name hash
+
+	ret
+GetModuleBase endp
+
 end
 
 
