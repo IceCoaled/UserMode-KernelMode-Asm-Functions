@@ -17,7 +17,7 @@ Getting Ntoskrnl base Address uses RVA's these are obviously subject to change b
 I'm currently on version 23h2 (OS build 22631.3880), it has Windows 10 Kernel Version 22621.
 that means this should work just fine down to that windows 10 version with no changes.
 
-UPDATE: Added wide char hash function, as well as a function to get any dll base. it takes the dll name hash(wchar_t*)
+UPDATE: Added wide char hash function, as well as a PEB walker. it takes the dll name hash(wchar_t*)
 ![Screenshot 2024-07-20 165916](https://github.com/user-attachments/assets/0704b291-92e6-4303-a8a5-96c5e65236c0)
 
 UPDATE2: Added A PsLoadedModuleList walker, this takes module name hash(wchar_t*) and PsLoadedModuleList pointer
