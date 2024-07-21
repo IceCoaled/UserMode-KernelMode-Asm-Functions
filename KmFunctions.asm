@@ -175,7 +175,7 @@ NextModule:
 	je ModuleNotFound ; If we are, the module is not loaded
 FirstModule:
 		
-	mov rsi, qword ptr [rbp + 60h]; Get the dll base name string
+	mov rsi, qword ptr [rbp + 60h]; Get the Module base name string
 
 	xor r14, r14 ; Clear the register for hash
 	mov r12, 0F0101010101h ; Set the hash
